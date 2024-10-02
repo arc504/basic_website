@@ -245,7 +245,7 @@ export function SuperAttractiveHackathon() {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="flex flex-col items-center p-8 bg-gray-800 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:bg-gray-700 hover:shadow-2xl"
+                  className="flex flex-col items-center p-8 bg-gray-800 rounded-xl shadow-lg transform transition-transform hover:scale-105 hover:bg-gray-700 hover:shadow-2xl max-w-full"
                 >
                   <p className="text-gray-200 text-lg text-center leading-relaxed">
                     {item.description}
