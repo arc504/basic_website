@@ -58,13 +58,16 @@ export function SuperAttractiveHackathon() {
 
   const menuItems = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/contact", label: "Contact" },
+    { href: "/#about", label: "About" },
+    { href: "/#events", label: "Events" },
+    { href: "/#schedule", label: "Schedule" },
+    { href: "/prizes", label: "Prizes" },
+    { href: "/register", label: "Register" },
+    { href: "/sponsor", label: "Sponsor" },
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white w-screen overflow-hidden">
       <header className="px-4 lg:px-6 h-16 flex items-center justify-between fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <Link className="flex items-center justify-center" href="#">
           <Rocket className="h-8 w-8 text-purple-400" />
@@ -72,7 +75,7 @@ export function SuperAttractiveHackathon() {
             Innov8X
           </span>
         </Link>
-        <nav className="ml-auto md:flex justify-center items-center gap-4 sm:gap-6 hidden">
+        <nav className="ml-auto md:flex justify-center items-center gap-4 sm:gap-6 hidden md:block">
           {["About", "Events", "Schedule"].map((item) => (
             <Link
               key={item}
@@ -117,14 +120,17 @@ export function SuperAttractiveHackathon() {
               <span className="sr-only">Open menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="bottom" className="">
-            <nav className="flex flex-col h-full justify-center">
-              <ul className="flex flex-col space-y-4">
+          <SheetContent side="bottom" className="bg-purple-700 p-0">
+            <nav className="flex flex-col h-full justify-center bg-purple-700">
+              <ul className="flex flex-col p-0">
                 {menuItems.map((item) => (
-                  <li key={item.href}>
+                  <li
+                    key={item.href}
+                    className="hover:bg-purple-400 m-0 p-5 border-b"
+                  >
                     <Link
                       href={item.href}
-                      className="text-2xl font-medium hover:text-primary transition-colors"
+                      className="text-2xl font-medium text-purple-100 transition-colors"
                       onClick={toggleMenu}
                     >
                       {item.label}
@@ -136,7 +142,7 @@ export function SuperAttractiveHackathon() {
           </SheetContent>
         </Sheet>
       </header>
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-16 sm:pt-12">
         <section className="w-full py-20 md:py-32 lg:py-48 xl:py-64 relative overflow-hidden">
           <div className="absolute inset-0 bg-[url('/placeholder.svg?height=1080&width=1920')] bg-cover bg-center opacity-10"></div>
           <motion.div
