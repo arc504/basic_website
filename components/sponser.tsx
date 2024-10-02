@@ -1,21 +1,36 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion, useAnimation } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Diamond, Award, Medal, Star, ArrowRight, Check, Sparkles } from "lucide-react"
-import Link from "next/link"
+import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Diamond,
+  Award,
+  Medal,
+  Star,
+  ArrowRight,
+  Check,
+  Sparkles,
+} from "lucide-react";
+import Link from "next/link";
 
 const sponsorTiers = [
   {
     name: "Diamond",
     icon: Diamond,
-    price: "$10,000",
+    price: "Rs.1,00,000",
     color: "from-blue-400 to-blue-600",
     benefits: [
       "Prime logo placement on all event materials",
@@ -23,45 +38,42 @@ const sponsorTiers = [
       "5-minute keynote speech opportunity",
       "Access to participants' resumes",
       "Social media shoutouts",
-      "10 free tickets for your team"
-    ]
+      "10 free tickets for your team",
+    ],
   },
   {
     name: "Gold",
     icon: Award,
-    price: "$5,000",
+    price: "Rs.50,000",
     color: "from-yellow-400 to-yellow-600",
     benefits: [
       "Logo on event website and materials",
       "Booth at the event",
       "3-minute pitch opportunity",
       "Social media mentions",
-      "5 free tickets for your team"
-    ]
+      "5 free tickets for your team",
+    ],
   },
   {
     name: "Silver",
     icon: Medal,
-    price: "$2,500",
+    price: "Rs.25,000",
     color: "from-gray-300 to-gray-500",
     benefits: [
       "Logo on event website",
       "Small booth at the event",
       "Social media mention",
-      "3 free tickets for your team"
-    ]
+      "3 free tickets for your team",
+    ],
   },
   {
     name: "Bronze",
     icon: Star,
-    price: "$1,000",
+    price: "Rs.10,000",
     color: "from-orange-400 to-orange-600",
-    benefits: [
-      "Logo on event website",
-      "1 free ticket for your team"
-    ]
-  }
-]
+    benefits: ["Logo on event website", "1 free ticket for your team"],
+  },
+];
 
 const FadingSparkle = ({ delay }: { delay: number }) => {
   return (
@@ -73,36 +85,38 @@ const FadingSparkle = ({ delay }: { delay: number }) => {
     >
       <Sparkles className="text-purple-300" size={16} />
     </motion.div>
-  )
-}
+  );
+};
 
 export default function StunningSponsorPage() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({ ...prev, [name]: value }))
-  }
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
+    e.preventDefault();
+    console.log("Form submitted:", formData);
     // Here you would typically send the data to your server
-  }
+  };
 
-  const controls = useAnimation()
-  const [ref, inView] = useInView()
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
 
   useEffect(() => {
     if (inView) {
-      controls.start('visible')
+      controls.start("visible");
     }
-  }, [controls, inView])
+  }, [controls, inView]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white overflow-hidden">
@@ -124,7 +138,8 @@ export default function StunningSponsorPage() {
             Sponsor Innov8X
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Join us in shaping the future of technology. Your support ignites innovation.
+            Join us in shaping the future of technology. Your support ignites
+            innovation.
           </p>
         </motion.div>
 
@@ -135,9 +150,9 @@ export default function StunningSponsorPage() {
           variants={{
             visible: {
               transition: {
-                staggerChildren: 0.1
-              }
-            }
+                staggerChildren: 0.1,
+              },
+            },
           }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
         >
@@ -146,16 +161,22 @@ export default function StunningSponsorPage() {
               key={tier.name}
               variants={{
                 hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
               }}
             >
               <Card className="bg-gray-800/50 backdrop-blur-md border-gray-700 overflow-hidden group">
                 <CardHeader className="relative">
-                  <div className={`w-20 h-20 bg-gradient-to-br ${tier.color} rounded-full flex items-center justify-center mb-4 mx-auto transform group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`w-20 h-20 bg-gradient-to-br ${tier.color} rounded-full flex items-center justify-center mb-4 mx-auto transform group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <tier.icon className="w-10 h-10 text-white" />
                   </div>
-                  <CardTitle className="text-2xl font-bold text-center text-white">{tier.name}</CardTitle>
-                  <CardDescription className="text-center text-white text-lg">{tier.price}</CardDescription>
+                  <CardTitle className="text-2xl font-bold text-center text-white">
+                    {tier.name}
+                  </CardTitle>
+                  <CardDescription className="text-center text-white text-lg">
+                    {tier.price}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
@@ -234,7 +255,10 @@ export default function StunningSponsorPage() {
                   rows={4}
                 />
               </div>
-              <Button type="submit" className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transform hover:scale-105 transition-all duration-300">
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white transform hover:scale-105 transition-all duration-300"
+              >
                 Send Inquiry
               </Button>
             </form>
@@ -251,14 +275,18 @@ export default function StunningSponsorPage() {
             Why Sponsor HackFest 2024?
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-            Connect with top talent, showcase your brand, and be part of the next big innovation in tech.
+            Connect with top talent, showcase your brand, and be part of the
+            next big innovation in tech.
           </p>
-          <Link href="/about" className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors group">
+          <Link
+            href="/about"
+            className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors group"
+          >
             Learn more about our event
             <ArrowRight className="ml-2 h-4 w-4 transform group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>
       </div>
     </div>
-  )
+  );
 }
