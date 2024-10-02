@@ -9,10 +9,12 @@ import {
   ChevronRight,
   Lightbulb,
   Brush,
+  Menu,
 } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 //import { RegisterPage } from "@/components/register"
 
 export function SuperAttractiveHackathon() {
@@ -50,16 +52,27 @@ export function SuperAttractiveHackathon() {
     return () => clearInterval(timer);
   }, []);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const menuItems = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/contact", label: "Contact" },
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 text-white">
-      <header className="px-4 lg:px-6 h-16 flex items-center fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
+      <header className="px-4 lg:px-6 h-16 flex items-center justify-between fixed w-full z-50 bg-gray-900/80 backdrop-blur-md">
         <Link className="flex items-center justify-center" href="#">
           <Rocket className="h-8 w-8 text-purple-400" />
           <span className="ml-2 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
             Innov8X
           </span>
         </Link>
-        <nav className="ml-auto flex justify-center items-center gap-4 sm:gap-6">
+        <nav className="ml-auto md:flex justify-center items-center gap-4 sm:gap-6 hidden">
           {["About", "Events", "Schedule"].map((item) => (
             <Link
               key={item}
@@ -91,15 +104,37 @@ export function SuperAttractiveHackathon() {
               Sponsor
             </Button>
           </Link>
-          <Link href="/prizes">
-            <Button
-              className="border border-white text-white bg-transparent text-sm sm:text-base px-4 py-2 hover:bg-white hover:text-black transition-all"
-              variant="ghost"
-            >
-              Prizes
-            </Button>
-          </Link>
         </nav>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="md:hidden"
+              aria-label="Open menu"
+            >
+              <Menu className="h-6 w-6" />
+              <span className="sr-only">Open menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="">
+            <nav className="flex flex-col h-full justify-center">
+              <ul className="flex flex-col space-y-4">
+                {menuItems.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-2xl font-medium hover:text-primary transition-colors"
+                      onClick={toggleMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </header>
       <main className="flex-1 pt-16">
         <section className="w-full py-20 md:py-32 lg:py-48 xl:py-64 relative overflow-hidden">
