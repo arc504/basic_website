@@ -8,25 +8,15 @@ const Prizes = () => {
     {
       title: "Hackathon",
       prizes: [
-        { position: "1st Place", amount: "₹50,000" },
-        { position: "2nd Place", amount: "₹20,000" },
-        { position: "3rd Place", amount: "₹10,000" },
-      ],
-    },
-    {
-      title: "Ideathon",
-      prizes: [
-        { position: "1st Place", amount: "₹30,000" },
-        { position: "2nd Place", amount: "₹15,000" },
-        { position: "3rd Place", amount: "₹7,000" },
+        { position: "1st Place", amount: "₹15,000" },
+        { position: "2nd Place", amount: "₹7,000" },
       ],
     },
     {
       title: "Designathon",
       prizes: [
-        { position: "1st Place", amount: "₹30,000" },
-        { position: "2nd Place", amount: "₹15,000" },
-        { position: "3rd Place", amount: "₹7,000" },
+        { position: "1st Place", amount: "₹10,000" },
+        { position: "2nd Place", amount: "₹5,000" },
       ],
     },
   ];
